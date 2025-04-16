@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Police_Violence_Analysis | EECS 398 Winter 2025 Final Project</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Police_Violence_Analysis" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="EECS 398 Winter 2025 Final Project" />
+<meta property="og:description" content="EECS 398 Winter 2025 Final Project" />
+<link rel="canonical" href="http://localhost:4000/" />
+<meta property="og:url" content="http://localhost:4000/" />
+<meta property="og:site_name" content="Police_Violence_Analysis" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Police_Violence_Analysis" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","description":"EECS 398 Winter 2025 Final Project","headline":"Police_Violence_Analysis","name":"Police_Violence_Analysis","url":"http://localhost:4000/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style" type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/css/style.css?v=0c4c5b6aae1990d7690158f249354644e93356cf">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <a id="skip-to-content" href="#content">Skip to the content.</a>
+
+    <header class="page-header" role="banner">
+      <h1 class="project-name">Police_Violence_Analysis</h1>
+      <h2 class="project-tagline">EECS 398 Winter 2025 Final Project</h2>
+      
+        <a href="https://github.com/satapath/Police_Violence_Analysis" class="btn">View on GitHub</a>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <h1 id="police_violence_analysis">Police_Violence_Analysis</h1>
+<p><em>EECS 398 Winter 2025 Final Project</em></p>
+
+<p>By <strong>Tisha Jain</strong> and <strong>Rishika Satapathy</strong></p>
+
+<hr />
+
+<h2 id="-introduction">📊 Introduction</h2>
+<p>Police violence is a significant public health issue. It impacts families and erodes the trust between law enforcement and the citizens they should protect. This project analyzes trends in police violence across the United States using publicly available datasets to answer the question: How do deaths from police vary? Do they vary by race? By gender? By location?</p>
+
+<p>The columns we plan to look at are Age, Gender, Race, Date, City, State, County, and Encounter Type. There are 14254 rows in the dataset.</p>
+
+<h2 id="️-data-cleaning-and-exploratory-data-analysis">🖼️ Data Cleaning and Exploratory Data Analysis</h2>
+<ol>
+  <li>We created a list of all the columns we needed and created a new dataset with it</li>
+  <li>We checked for null values in each of our columns and imputated missing values based on column variable type
+    <ul>
+      <li>Age is numerical, so we thought unconditional mean imputation was best</li>
+      <li>Gender is categorical, so we thought unconditional mode imputation was best</li>
+      <li>Encounter type is categorical, so we thought unconditional mode imputation was best</li>
+      <li>County relies on the state and city, so we thought to create a function that applies conditional mode to each city/state pair with a null value</li>
+      <li>Race, Date, City, and State had no missing values, therefore we didn’t have to imputate them</li>
+    </ul>
+  </li>
+  <li>Once the dataset was cleaned, we conducted two EDA plots
+<!--- Embed plot here ---->
+    <ul>
+      <li>This is a bivariate analysis between race and age. We can see that White, Hispanic, and Black groups have the lowest minimum age of death.
+<!--- Embed plots here ----></li>
+      <li>This is a univariate analysis of state. We can see that California and Texas have the highest count of police killings.</li>
+    </ul>
+  </li>
+  <li>We also checked for any interesting aggregrates/grouped data
+<!--- Embed table here ---->
+    <ul>
+      <li>We grouped by year and found that deaths in 2025 was the lowest, but that makes sense because we’re only 3 months in. Fatalities have increased from 2013-2015 before dipping in 2016, increasing till 2018, and then dipping again before increasing every year after.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="-framing-a-prediction-problem">🔍 Framing a Prediction Problem</h2>
+<p>We want to predict the encounter type based on age, race, date, and location. This would be a multiclass classification problem because encounter type is a categorical variable with multiple outputs.</p>
+
+<p>We chose encounter type as it would help us understand which situations are more likely to lead to fatalities. We plan to use all the metrics and see which one we want to weigh more heavily afterwards.</p>
+
+<h2 id="baseline-model">Baseline Model</h2>
+
+<h2 id="final-model">Final Model</h2>
+
+<!---Example of how to add images ![Police Violence Graph](images/police_violence_graph.png)--->
+
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><a href="https://github.com/satapath/Police_Violence_Analysis">Police_Violence_Analysis</a> is maintained by <a href="https://github.com/satapath">satapath</a>.</span>
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </main>
+  </body>
+</html>
