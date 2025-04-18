@@ -25,7 +25,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="stylesheet" href="/assets/css/style.css?v=0c4c5b6aae1990d7690158f249354644e93356cf">
+    <link rel="stylesheet" href="/assets/css/style.css?v=5de98f45e0127750d0f650e509b053a67d37a6cf">
     <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
 
 <!-- Setup Google Analytics -->
@@ -51,8 +51,8 @@
     </header>
 
     <main id="content" class="main-content" role="main">
-      <h1 id="police_violence_analysis">Police_Violence_Analysis</h1>
-<p><em>EECS 398 Winter 2025 Final Project</em></p>
+      <p># Police_Violence_Analysis
+<em>EECS 398 Winter 2025 Final Project</em></p>
 
 <p>By <strong>Tisha Jain</strong> and <strong>Rishika Satapathy</strong></p>
 
@@ -61,12 +61,26 @@
 <h2 id="-introduction">📊 Introduction</h2>
 <p>Police violence is a significant public health issue. It impacts families and erodes the trust between law enforcement and the citizens they should protect. This project analyzes trends in police violence across the United States using publicly available datasets to answer the question: How do deaths from police vary? Do they vary by race? By gender? By location?</p>
 
-<p>The columns we plan to look at are Age, Gender, Race, Date, City, State, County, and Encounter Type. There are 14254 rows in the dataset.</p>
+<h1 id="our-dataset">Our Dataset</h1>
+<p>There are 14254 rows and 61 columns in the dataset. However, over half of these columns are missing majority of their data and others did not seems usueful in answering our question. Therefore, we ended up choosing eight columns:</p>
+<ul>
+  <li>Age: Age of the Victim</li>
+  <li>Gender: Gender of the Victim</li>
+  <li>Race: Race of the Victim</li>
+  <li>Date: Date when the event occurred (from 2013-2025)</li>
+  <li>City: City where the event occurred</li>
+  <li>State: State where the event occurred</li>
+  <li>County: County where the event occurred</li>
+  <li>Encounter_Type: Nature of Interaction between individual and law enforcement</li>
+</ul>
 
 <h2 id="️-data-cleaning-and-exploratory-data-analysis">🖼️ Data Cleaning and Exploratory Data Analysis</h2>
 <ol>
-  <li>We created a list of all the columns we needed and created a new dataset with it</li>
-  <li>We checked for null values in each of our columns and imputated missing values based on column variable type
+  <li>
+    <p>We created a list of all the columns we needed and created a new dataset with it</p>
+  </li>
+  <li>
+    <p>We checked for null values in each of our columns and imputated missing values based on column variable type</p>
     <ul>
       <li>Age is numerical, so we thought unconditional mean imputation was best</li>
       <li>Gender is categorical, so we thought unconditional mode imputation was best</li>
@@ -75,32 +89,121 @@
       <li>Race, Date, City, and State had no missing values, therefore we didn’t have to imputate them</li>
     </ul>
   </li>
-  <li>Once the dataset was cleaned, we conducted two EDA plots
-<!--- Embed plot here ---->
-    <ul>
-      <li>This is a bivariate analysis between race and age. We can see that White, Hispanic, and Black groups have the lowest minimum age of death.
-<!--- Embed plots here ----></li>
-      <li>This is a univariate analysis of state. We can see that California and Texas have the highest count of police killings.</li>
-    </ul>
-  </li>
-  <li>We also checked for any interesting aggregrates/grouped data
-<!--- Embed table here ---->
-    <ul>
-      <li>We grouped by year and found that deaths in 2025 was the lowest, but that makes sense because we’re only 3 months in. Fatalities have increased from 2013-2015 before dipping in 2016, increasing till 2018, and then dipping again before increasing every year after.</li>
-    </ul>
-  </li>
 </ol>
+
+<p>An example of our cleaned dataset:</p>
+<iframe src="assets/filtered_data.html" width="600" height="300" frameborder="0">
+</iframe>
+
+<ol>
+  <li>Once the dataset was cleaned, we constructed two EDA plots</li>
+</ol>
+<iframe src="assets/univariate.html" width="800" height="600" frameborder="0"></iframe>
+<ul>
+  <li>This is a univariate analysis of state. We can see that California and Texas have the highest count of police killings.</li>
+</ul>
+<iframe src="assets/bivariate.html" width="800" height="600" frameborder="0"></iframe>
+<ul>
+  <li>This is a bivariate analysis between race and age. We can see that White, Hispanic, and Black groups have the lowest minimum age of death.</li>
+</ul>
+
+<ol>
+  <li>We also checked for any interesting aggregrates/grouped data</li>
+</ol>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right">year</th>
+      <th style="text-align: right">count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">2013</td>
+      <td style="text-align: right">1078</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">2014</td>
+      <td style="text-align: right">1040</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">2015</td>
+      <td style="text-align: right">1103</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">2016</td>
+      <td style="text-align: right">1067</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">2017</td>
+      <td style="text-align: right">1101</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">2018</td>
+      <td style="text-align: right">1148</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">2019</td>
+      <td style="text-align: right">1115</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">2020</td>
+      <td style="text-align: right">1159</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">2021</td>
+      <td style="text-align: right">1190</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">2022</td>
+      <td style="text-align: right">1269</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">2023</td>
+      <td style="text-align: right">1361</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">2024</td>
+      <td style="text-align: right">1365</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">2025</td>
+      <td style="text-align: right">249</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>We grouped by year and found that deaths in 2025 was the lowest, but that makes sense because we’re only 3 months in. Fatalities have increased from 2013-2015 before dipping in 2016, increasing till 2018, and then dipping again before increasing every year after.</li>
+</ul>
 
 <h2 id="-framing-a-prediction-problem">🔍 Framing a Prediction Problem</h2>
 <p>We want to predict the encounter type based on age, race, date, and location. This would be a multiclass classification problem because encounter type is a categorical variable with multiple outputs.</p>
 
-<p>We chose encounter type as it would help us understand which situations are more likely to lead to fatalities. We plan to use all the metrics and see which one we want to weigh more heavily afterwards.</p>
+<p>We chose encounter type as it would help us understand which situations are more likely to lead to fatalities. Since we are using a multiclass classification model, we will evaluate performance using accuracy and the F1 score for simplicity and clarity.</p>
+<iframe src="assets/encounter.html" width="800" height="600" frameborder="0"></iframe>
 
 <h2 id="baseline-model">Baseline Model</h2>
+<p>We trained a K-Nearest Neighbors model as our baseline. We used five features: Race, State, Age, Top_10_cities, and Year. We chose:</p>
+<ul>
+  <li>Race as different racial groups experience different levels of interaction with the police</li>
+  <li>State as policies, crime rates, and laws vary widely across states</li>
+  <li>Age as it was the only quantitative variable and could give insights into how different age groups may be associated with different encounter_types.</li>
+  <li>Year as it could help capture trends and shifts over time.</li>
+  <li>Top 10 Cities to identify locations where certain encounters are more likely to occur.</li>
+</ul>
+
+<p>Our model performed reasonably well for a baseline, achieving 23.2% accuracy and a F1 Score of 15.9%. Given that our response variable has 8 possible cases, a random guess would result in an accuracy of 12.5%, meaning our model surpasses random guessing. However, while this is a positive start, there is room for improvement.</p>
 
 <h2 id="final-model">Final Model</h2>
+<p>We ended up choosing a Logistic Regression model with Ridge regression as our final model. Our model ended up with a 30.7% accuracy and a F1 score of 16.3%.</p>
 
-<!---Example of how to add images ![Police Violence Graph](images/police_violence_graph.png)--->
+<p>After discussing with our professor, we realized the primary issue was the lack of quantitative variables in our prediction model. Unfortunately, the dataset contains only one quantitative variable, meaning our model’s performance will not be able to improve from this point.</p>
+
+<h1 id="confusion-matrix">Confusion Matrix</h1>
+<iframe src="assets/log_matrix.html" width="800" height="600" frameborder="0"></iframe>
+
 
 
       <footer class="site-footer">
