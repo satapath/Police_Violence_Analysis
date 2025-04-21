@@ -80,8 +80,10 @@ We chose encounter type as it would help us understand which situations are more
  frameborder="0"
  ></iframe>
 
+ We can see that the distribution is a bit imbalanced with Violent Crimes having the highest count, which is 3x the lowest category. Therefore, we expect the prediction model to be biased towards the majority class (Violent Crimes).
+
 # 🔍 Baseline Model
-We trained a K-Nearest Neighbors model as our baseline. We used five features: Race, State, Age, Top_10_cities, and Year. We chose:
+We trained a K-Nearest Neighbors (KNN) model as our baseline. We used five features: Race, State, Age, Top_10_cities, and Year. We chose:
 - **Race** as different racial groups experience different levels of interaction with the police
 - **State** as policies, crime rates, and laws vary widely across states
 - **Age** as it was the only quantitative variable and could give insights into how different age groups may be associated with different encounter_types.
@@ -92,7 +94,7 @@ We OneHotEncoded all the categorical variables (Race, State, Year, and Top 10 Ci
 Our model performed reasonably well for a baseline, achieving 23.2% accuracy and a F1 Score of 15.9%. Given that our response variable has 8 possible cases, a random guess would result in an accuracy of 12.5%, meaning our model surpasses random guessing. However, while this is a positive start, there is room for improvement.
 
 # 🔍 Final Model
-We ended up choosing a Logistic Regression model with Ridge regularization (penalty='l2') and used polynomial features (degree=2). After testing different hyperparameter values, we found that setting C=0.21 performed best. Our model achieved a 30.7% accuracy and a F1 score of 16.5%, a small improvement from our baseline.
+We ended up choosing a Logistic Regression model with Ridge regularization. Logistic regression is computationally efficient for large datasets and is more interpretable than KNN. Ridge regularization helps prevent overfitting, ensuring better generalization to unseen data, and is robust to noise/outliers. Our model achieved a 30.7% accuracy and a F1 score of 16.5%, a small improvement from our baseline.
 
 Initially, we used GridSearchCV to evaluate different hyperparameter combinations via cross-validation. However, the process quickly became computationally expensive, with excessive iterations leading to prolonged run times. To keep execution feasible, we limited the polynomial degree to a range of 1–3 and and C between 1–5. Despite this, the best accuracy achieved was only 30.2%, with an F1 score of 13.7%—falling short compared to our manually selected parameters. Ultimately, we chose a polynomial degree of 2 to introduce some complexity into our model and chose a low C value of 0.21 to prevent overfitting and improve generalization.
 
@@ -100,10 +102,10 @@ We were pretty disappointed with the 30.7% accuracy after trying so many models.
 
 ## Confusion Matrix
 <iframe
- src="assets/log_matrix.html"
+ src="assets/confusion_matrix.html"
  width="800"
  height="600"
  frameborder="0"
  ></iframe>
 
-Our Confusion Matrix shows that it does a good job in predicting Domestic Disturbances and Other Non_Violent Offenses, but not so well for the other six encounter types.
+Our Confusion Matrix shows that it does a good job in predicting Violent Crimes and Person with Weapon encounters, but not so well for the other six encounter types. This makes sense because our distribution of encounter types was imbalanced earlier.
