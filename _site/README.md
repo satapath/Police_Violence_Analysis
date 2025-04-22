@@ -1,4 +1,4 @@
-# Police Violence Analysis
+# Patterns of Violence: A Data-Driven Analysis of Police Killings in the U.S.
 By **Tisha Jain** and **Rishika Satapathy**
 
 ---
